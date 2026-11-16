@@ -11,11 +11,11 @@ var MVBC_EVENTS = [
 
 /* ------------------------------------------------------------------
    CONTACT FORM
-   Paste the form endpoint here (for example a Formspree URL like
-   https://formspree.io/f/abcdwxyz). Until it is set, the form opens
-   the visitor's email app addressed to CONTACT_EMAIL instead.
+   Messages are sent through FormSubmit (formsubmit.co) to CONTACT_EMAIL.
+   If FORM_ENDPOINT is emptied, the form opens the visitor's email app
+   addressed to CONTACT_EMAIL instead.
 ------------------------------------------------------------------- */
-var FORM_ENDPOINT = "";
+var FORM_ENDPOINT = "https://formsubmit.co/ajax/mountainvalleybaseballclub@gmail.com";
 var CONTACT_EMAIL = "mountainvalleybaseballclub@gmail.com";
 
 (function () {
@@ -109,7 +109,8 @@ var CONTACT_EMAIL = "mountainvalleybaseballclub@gmail.com";
 
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
-      if (form.elements.website.value) return; // spam trap
+      if (form.elements._honey.value) return; // spam trap
+      if (!form.reportValidity()) return;
       var f = form.elements;
       status.className = "form-status";
 
@@ -128,6 +129,9 @@ var CONTACT_EMAIL = "mountainvalleybaseballclub@gmail.com";
         body: new FormData(form)
       }).then(function (r) {
         if (!r.ok) throw new Error();
+        return r.json();
+      }).then(function (data) {
+        if (String(data.success) !== "true") throw new Error();
         form.reset();
         status.textContent = "Thanks! Your message was sent. We will be in touch soon.";
       }).catch(function () {
