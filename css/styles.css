@@ -159,7 +159,7 @@ p { margin: 0; }
   object-fit: cover; object-position: 50% 30%;
 }
 .hero-logo {
-  position: absolute; left: 50%; top: 42%; transform: translate(-50%, -50%);
+  position: absolute; left: 50%; top: calc(42% - 30px); transform: translate(-50%, -50%);
   width: clamp(170px, 23vw, 350px); height: auto;
 }
 
