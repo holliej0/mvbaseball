@@ -15,8 +15,8 @@ var MVBC_EVENTS = [
    If FORM_ENDPOINT is emptied, the form opens the visitor's email app
    addressed to CONTACT_EMAIL instead.
 ------------------------------------------------------------------- */
-var FORM_ENDPOINT = "https://formsubmit.co/ajax/mountainvalleybaseballclub@gmail.com";
-var CONTACT_EMAIL = "mountainvalleybaseballclub@gmail.com";
+var FORM_ENDPOINT = "https://formsubmit.co/ajax/info@mvbaseball.org";
+var CONTACT_EMAIL = "info@mvbaseball.org";
 
 (function () {
   // Mobile menu
